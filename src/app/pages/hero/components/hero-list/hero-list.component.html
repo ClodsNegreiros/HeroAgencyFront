@@ -1,9 +1,18 @@
 <div class="hero-list-container">
   <h2>Lista de Super-Heróis</h2>
 
-  <button routerLink="/hero/new" class="btn-add">Adicionar Novo Herói</button>
+  <button routerLink="/heroes/new" class="btn btn-primary">Adicionar Novo Herói</button>
 
-  <div class="hero-grid">
+  <div *ngIf="loading" class="loading">
+    Carregando...
+  </div>
+
+  <div *ngIf="error" class="error-message">
+    {{ error }}
+    <button (click)="loadHeroes()" class="btn btn-primary">Tentar Novamente</button>
+  </div>
+
+  <div *ngIf="!loading && !error" class="hero-grid">
     <table>
       <thead>
         <tr>
@@ -17,15 +26,15 @@
       </thead>
       <tbody>
         <tr *ngFor="let hero of heroes">
-          <td>{{ hero.nome }}</td>
-          <td>{{ hero.nomeHeroi }}</td>
-          <td>{{ hero.dataNascimento }}</td>
-          <td>{{ hero.altura }}m</td>
-          <td>{{ hero.peso }}kg</td>
+          <td>{{ hero.name }}</td>
+          <td>{{ hero.heroName }}</td>
+          <td>{{ hero.birthDate | date:'dd/MM/yyyy' }}</td>
+          <td>{{ hero.height }}m</td>
+          <td>{{ hero.weight }}kg</td>
           <td>
-            <button [routerLink]="" class="btn-view">Visualizar</button>
-            <button [routerLink]="" class="btn-edit">Editar</button>
-            <button class="btn-delete">Excluir</button>
+            <button [routerLink]="['/heroes', hero.id]" class="btn btn-primary">Visualizar</button>
+            <button [routerLink]="['/heroes/edit', hero.id]" class="btn btn-primary">Editar</button>
+            <button (click)="deleteHero(hero.id!)" class="btn btn-danger">Excluir</button>
           </td>
         </tr>
       </tbody>

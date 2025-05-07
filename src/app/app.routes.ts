@@ -6,9 +6,9 @@ import { HeroDetailComponent } from './pages/hero/components/hero-detail/hero-de
 
 export const routes: Routes = [
     { path: '', redirectTo: '/heroes', pathMatch: 'full' },
+    { path: 'heroes', component: HeroListComponent },
     { path: 'heroes/new', component: HeroFormComponent },
     { path: 'heroes/edit/:id', component: HeroFormComponent },
-    { path: 'heroes', component: HeroListComponent },
     { path: 'heroes/:id', component: HeroDetailComponent }
 ];
 
