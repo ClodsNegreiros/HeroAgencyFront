@@ -1,0 +1,34 @@
+<div class="hero-list-container">
+  <h2>Lista de Super-Heróis</h2>
+
+  <button routerLink="/hero/new" class="btn-add">Adicionar Novo Herói</button>
+
+  <div class="hero-grid">
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Nome do Herói</th>
+          <th>Data de Nascimento</th>
+          <th>Altura</th>
+          <th>Peso</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let hero of heroes">
+          <td>{{ hero.nome }}</td>
+          <td>{{ hero.nomeHeroi }}</td>
+          <td>{{ hero.dataNascimento }}</td>
+          <td>{{ hero.altura }}m</td>
+          <td>{{ hero.peso }}kg</td>
+          <td>
+            <button [routerLink]="" class="btn-view">Visualizar</button>
+            <button [routerLink]="" class="btn-edit">Editar</button>
+            <button class="btn-delete">Excluir</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
