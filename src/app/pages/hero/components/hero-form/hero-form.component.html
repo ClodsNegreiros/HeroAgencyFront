@@ -1,0 +1,88 @@
+<div class="hero-form-container">
+  <mat-card>
+    <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+
+    <mat-card-header>
+      <mat-card-title>{{ isEditing ? "Editar" : "Novo" }} Super-Herói</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div *ngIf="error" class="error-message">
+        {{ error }}
+        <button mat-raised-button color="primary" (click)="loadSuperpowers()">Tentar Novamente</button>
+      </div>
+
+      <form [formGroup]="heroForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline">
+          <mat-label>Nome</mat-label>
+          <input matInput formControlName="name" placeholder="Digite o nome">
+          <mat-error *ngIf="heroForm.get('name')?.errors?.['required'] && heroForm.get('name')?.touched">
+            Nome é obrigatório
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Nome do Herói</mat-label>
+          <input matInput formControlName="heroName" placeholder="Digite o nome do herói">
+          <mat-error *ngIf="heroForm.get('heroName')?.errors?.['required'] && heroForm.get('heroName')?.touched">
+            Nome do Herói é obrigatório
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Data de Nascimento</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="birthDate">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="heroForm.get('birthDate')?.errors?.['required'] && heroForm.get('birthDate')?.touched">
+            Data de Nascimento é obrigatória
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Altura (m)</mat-label>
+          <input matInput type="number" step="0.01" formControlName="height" placeholder="Digite a altura">
+          <mat-error *ngIf="heroForm.get('height')?.errors?.['required'] && heroForm.get('height')?.touched">
+            Altura é obrigatória
+          </mat-error>
+          <mat-error *ngIf="heroForm.get('height')?.errors?.['min'] && heroForm.get('height')?.touched">
+            Altura deve ser maior que zero
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Peso (kg)</mat-label>
+          <input matInput type="number" step="0.1" formControlName="weight" placeholder="Digite o peso">
+          <mat-error *ngIf="heroForm.get('weight')?.errors?.['required'] && heroForm.get('weight')?.touched">
+            Peso é obrigatório
+          </mat-error>
+          <mat-error *ngIf="heroForm.get('weight')?.errors?.['min'] && heroForm.get('weight')?.touched">
+            Peso deve ser maior que zero
+          </mat-error>
+        </mat-form-field>
+
+        <div class="superpowers-section">
+          <h3>Superpoderes</h3>
+          <div class="superpowers-grid">
+            <mat-checkbox
+              *ngFor="let power of superpowers"
+              [checked]="heroForm.get('superpowers')?.value?.includes(power.id)"
+              (change)="onSuperpowerChange(power.id, $event.checked)">
+              {{ power.power }}
+            </mat-checkbox>
+          </div>
+          <mat-error *ngIf="heroForm.get('superpowers')?.errors?.['required'] && heroForm.get('superpowers')?.touched">
+            Selecione pelo menos um superpoder
+          </mat-error>
+        </div>
+
+        <div class="form-actions">
+          <button mat-button type="button" routerLink="/heroes">Cancelar</button>
+          <button mat-raised-button color="primary" type="submit" [disabled]="!heroForm.valid || isLoading">
+            {{ isEditing ? "Atualizar" : "Criar" }} Herói
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
