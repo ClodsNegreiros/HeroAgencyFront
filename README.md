@@ -1,27 +1,47 @@
-# HeroAgency
+# Hero Agency 🦸‍♂️
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.0.
+Uma aplicação Angular para gerenciamento de super-heróis, desenvolvida como parte de um projeto de estudo.
 
-## Development server
+## 🚀 Funcionalidades
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Listagem de super-heróis
+- Visualização detalhada de heróis
+- Criação de novos heróis
+- Edição de heróis existentes
+- Gerenciamento de superpoderes
+- Interface moderna com Angular Material
 
-## Code scaffolding
+## 🛠️ Tecnologias Utilizadas
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Angular 17
+- Angular Material
+- TypeScript
+- RxJS
+- SCSS
 
-## Build
+## 📋 Pré-requisitos
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Node.js (versão 18 ou superior)
+- npm (gerenciador de pacotes do Node)
+- Angular CLI
+- .NET Core SDK 7.0 ou superior
 
-## Running unit tests
+## 🔧 Instalação
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. Clone o repositório:
+```bash
+git clone https://github.com/ClodsNegreiros/HeroAgencyFront.git
+```
 
-## Running end-to-end tests
+2. Instale as dependências:
+```bash
+cd hero-agency
+npm install
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+3. Inicie o servidor de desenvolvimento:
+```bash
+ng serve
+```
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+4. Acesse a aplicação em `http://localhost:4200`
