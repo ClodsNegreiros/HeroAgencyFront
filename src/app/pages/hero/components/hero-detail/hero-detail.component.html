@@ -1,0 +1,38 @@
+<div class="container">
+  <mat-card>
+    <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+
+    <mat-card-header>
+      <mat-card-title>Hero Details</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content *ngIf="hero">
+      <div class="hero-info">
+        <div class="info-group">
+          <h3>Personal Information</h3>
+          <p><strong>Name:</strong></p>
+          <p><strong>Hero Name:</strong></p>
+          <p><strong>Birth Date:</strong></p>
+          <p><strong>Height:</strong></p>
+          <p><strong>Weight:</strong></p>
+        </div>
+
+        <div class="info-group">
+          <h3>Superpowers</h3>
+          <mat-list>
+            <mat-list-item>
+              <!-- <mat-icon matListIcon>star</mat-icon> -->
+              <h4 matLine>power.name</h4>
+              <p matLine>power.description</p>
+            </mat-list-item>
+          </mat-list>
+        </div>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions align="end">
+      <button mat-button>Back</button>
+      <button mat-raised-button color="primary" *ngIf="hero">Edit</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
