@@ -1,5 +1,6 @@
 export interface Superpower {
     id: number;
-    superpoder: string;
-    descricao: string;
+    power: string;
+    description: string;
+    superHeroPowers: any | null;
 }

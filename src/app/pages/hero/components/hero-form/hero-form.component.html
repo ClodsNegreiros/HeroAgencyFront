@@ -68,7 +68,7 @@
               *ngFor="let power of superpowers"
               [checked]="heroForm.get('superpowers')?.value?.includes(power.id)"
               (change)="onSuperpowerChange(power.id, $event.checked)">
-              {{ power.superpoder }}
+              {{ power.power }}
             </mat-checkbox>
           </div>
           <mat-error *ngIf="heroForm.get('superpowers')?.errors?.['required'] && heroForm.get('superpowers')?.touched">

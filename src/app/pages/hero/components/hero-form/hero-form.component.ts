@@ -69,14 +69,22 @@ export class HeroFormComponent implements OnInit {
 
     loadSuperpowers(): void {
         this.isLoading = true;
+        this.error = null;
+        console.log('Iniciando carregamento dos superpoderes...');
+
         this.heroService.getSuperpowers().subscribe({
             next: (powers) => {
+                console.log('Superpoderes carregados com sucesso:', powers);
                 this.superpowers = powers;
                 this.isLoading = false;
             },
             error: (error) => {
-                console.error('Erro ao carregar superpoderes:', error);
-                this.error = 'Não foi possível carregar os superpoderes';
+                console.error('Erro detalhado ao carregar superpoderes:', {
+                    status: error.status,
+                    message: error.message,
+                    error: error.error
+                });
+                this.error = `Erro ao carregar superpoderes: ${error.status} - ${error.message}`;
                 this.isLoading = false;
             }
         });
@@ -110,9 +118,14 @@ export class HeroFormComponent implements OnInit {
         if (this.heroForm.invalid) return;
 
         this.isLoading = true;
+        const formValue = this.heroForm.value;
         const heroData: SuperHero = {
-            ...this.heroForm.value,
-            birthDate: this.heroForm.value.birthDate.toISOString()
+            name: formValue.name,
+            heroName: formValue.heroName,
+            birthDate: formValue.birthDate.toISOString(),
+            height: formValue.height,
+            weight: formValue.weight,
+            SuperHeroPowersIds: formValue.superpowers
         };
 
         const request = this.isEditing

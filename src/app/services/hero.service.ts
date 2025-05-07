@@ -59,7 +59,7 @@ export class HeroService {
     }
 
     getSuperpowers(): Observable<Superpower[]> {
-        return this.http.get<ApiListResponse<Superpower>>(`${this.apiUrl}/superpowers`)
+        return this.http.get<ApiListResponse<Superpower>>(`${this.apiUrl}/SuperPower`)
             .pipe(
                 map(response => response.models)
             );

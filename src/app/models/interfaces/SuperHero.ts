@@ -7,5 +7,6 @@ export interface SuperHero {
     birthDate: Date;
     height: number;
     weight: number;
-    superpowers: Superpower[];
+    superpowers?: Superpower[];
+    SuperHeroPowersIds?: number[];
 }
